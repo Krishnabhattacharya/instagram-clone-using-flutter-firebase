@@ -27,11 +27,11 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
                   home:
                   return ResponsiveLayout(
                     mobileScreenLayout: mobilescreen(),
-                    webScreenLayout: webscreen(),
+                    webScreenLayout: WebScreenLayout(),
                   );
                 } else if (snapshot.hasError) {
                   return Center(

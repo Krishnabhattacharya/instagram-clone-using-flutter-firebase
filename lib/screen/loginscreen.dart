@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_clone/resources/auth_method.dart';
+import 'package:instagram_clone/responsive/globleVariable.dart';
 import 'package:instagram_clone/screen/signup.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/utils/utils.dart';
@@ -43,7 +44,7 @@ class _loginScreenStateState extends State<loginScreenState> {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => ResponsiveLayout(
                 mobileScreenLayout: mobilescreen(),
-                webScreenLayout: webscreen(),
+                webScreenLayout: WebScreenLayout(),
               )));
       setState(() {
         isloading = false;
@@ -60,7 +61,10 @@ class _loginScreenStateState extends State<loginScreenState> {
     return Scaffold(
         body: SafeArea(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 32),
+        padding: MediaQuery.of(context).size.width > webScreen
+            ? EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width / 3)
+            : EdgeInsets.symmetric(horizontal: 32),
         width: double.infinity,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Flexible(

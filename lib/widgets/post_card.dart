@@ -46,7 +46,9 @@ class _post_cardState extends State<post_card> {
   @override
   Widget build(BuildContext context) {
     final model.User? user = Provider.of<UserProvider>(context).getUser!;
-    return Container(
+    return user==null? Center(child: CircularProgressIndicator(),):
+    
+     Container(
       color: mobileBackgroundColor,
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Column(children: [

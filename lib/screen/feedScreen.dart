@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:instagram_clone/responsive/globleVariable.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/post_card.dart';
 
@@ -11,9 +10,10 @@ class feedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mobileBackgroundColor,
+      appBar:width>webScreen?null: AppBar(
+        backgroundColor:width>webScreen?webBackgroundColor: mobileBackgroundColor,
         centerTitle: false,
         title: SvgPicture.asset(
           'assets/Instagram-Wordmark-White-Logo.wine.svg',
@@ -34,8 +34,8 @@ class feedScreen extends StatelessWidget {
           return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) => post_card(
-                snap:snapshot.data!.docs[index].data(),
-              ));
+                    snap: snapshot.data!.docs[index].data(),
+                  ));
         },
       ),
     );
